@@ -41,7 +41,7 @@
 8. 当调用Thread.yied()函数时，会给线程调度器一个当前线程愿意让处cpu的暗示，但线程调度器可能会忽视这个暗示
 9. 如何中断线程
    通过调用stop方法停止线程(已过期)
-   #调用interrupt，通知该线程应该中断
+   调用interrupt，通知该线程应该中断
    如果现场处于阻塞状态，则该该线程立即退出阻塞状态，抛出一个InterruptedException
    如果该线程处于活跃的状态。则会将该线程的中断标志位设置为true.被设置中断标志的线程将继续正常运行，不受影响
    需要被调用的线程配合中断使用
@@ -71,3 +71,14 @@
       synchronized 悲观锁
       CAS(Compare and Swap) 乐观锁机制（提交检测）atomic
         使用unsafe的方法
+  11. java线程池
+      - newFixedThreadPool(int nThread) 指定线程池数量的线程池
+      - newCachedThread()
+        处理大量短时间工作任务的线程池
+      - newSingleThreadExcutor()
+        创建唯一的工作线程来执行任务，如果线程异常结束，会有令一个线程取代他
+      - newSingleThreadScheduledExcutor与newScheduledThreadPool(int corepoolSize)
+        定时或者周期性任务调度
+      - newWorkStealingPool()
+      
+        Executor/ExecutorService/ScheduledExecutorService
