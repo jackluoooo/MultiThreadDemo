@@ -45,4 +45,29 @@
    如果现场处于阻塞状态，则该该线程立即退出阻塞状态，抛出一个InterruptedException
    如果该线程处于活跃的状态。则会将该线程的中断标志位设置为true.被设置中断标志的线程将继续正常运行，不受影响
    需要被调用的线程配合中断使用
+ 10. Reentrantlock
+     位于java.util.locks
+     基于AQS
+     比synchronized更细粒度话控制
+     lock后必须unlock
+     
+     synchronized与Reentrantlock区别
+     - synchronized是关键字，Reentrantlock是类
+     - Reentrantlock可与获取锁的等待时间避免死锁
+     - Reentrantlock 可以获取锁的各种信息
+     - synchronized 操作对象头的MarkWord ,lock调用unSafe类的park方法
+ 
+ 11. java内存模型JMM主内存与工作内存
+      JMM主内存
+      - 存储实例对象
+      - 包含成员变量，类信息，常量，静态变量
+     
+      JMM工作内存
+      - 存储当前方法的所有本地信息，本地信息对其他线程不可见
       
+      volatile : JVM提供的轻量级同步机制
+      - 保证volatile修饰的共享变量对所有线程总是可见的（并非真正的线程同步）
+      
+      synchronized 悲观锁
+      CAS(Compare and Swap) 乐观锁机制（提交检测）atomic
+        使用unsafe的方法
